@@ -24,14 +24,18 @@ if (isset($_GET['concluir'])) {
 
 // 4. DELETE (Excluir)
 if (isset($_GET['excluir'])) {
+    $id = $_GET['excluir'];
     $sql = "DELETE FROM tarefas WHERE id = :id";
-    $stmt = $pdo->prepare($sql)->execute([':id' => $_GET['excluir']]);
+    $stmt = $pdo->prepare($sql);
+    $stmt->execute([':id' => $id]);
+    
     header("Location: index.php");
     exit;
 }
 
 // 5. READ (Listar)
-$tarefas = $pdo->query("SELECT * FROM tarefas ORDER BY status DESC, id DESC")->fetchAll(PDO::FETCH_ASSOC);
+$sql = "SELECT * FROM tarefas ORDER BY status DESC, id DESC";
+$tarefas = $pdo->query($sql)->fetchAll(PDO::FETCH_ASSOC);
 ?>
 
 <!DOCTYPE html>
