@@ -1,7 +1,7 @@
 <?php
 // 1. CONEXÃO
 
-    //$pdo = new PDO("mysql:host=localhost;dbname=aula_php", "root", "");
+    $pdo = new PDO("mysql:host=localhost;dbname=aula_php", "root", "");
 
 // 2. CREATE (Adicionar)
 if (isset($_POST['descricao']) && !empty($_POST['descricao'])) {
